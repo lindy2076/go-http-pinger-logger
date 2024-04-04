@@ -1,0 +1,13 @@
+[Unit]
+Description=Run binary file after network has been loaded
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/webapp/app.bin
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

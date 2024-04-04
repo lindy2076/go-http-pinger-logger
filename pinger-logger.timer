@@ -1,0 +1,9 @@
+[Unit]
+Description=Run pinger-logger every 5 min
+
+[Timer]
+OnUnitActiveSec=5min
+Unit=pinger-logger.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Pinger logger service
+After=webapp.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/go run /opt/pinger-logger/main.go
+
+[Install]
+WantedBy=multi-user.target
