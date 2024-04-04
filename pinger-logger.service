@@ -4,7 +4,7 @@ After=webapp.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/go run /opt/pinger-logger/main.go
+ExecStart=/opt/pinger-logger/pinger-logger
 
 [Install]
 WantedBy=multi-user.target

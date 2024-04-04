@@ -20,14 +20,17 @@ SUCCESS 2024/04/04 08:06:31
 В репе лежат два systemd файла и один таймер:
 
 `webapp.service`, запускающий вебсервер после старта системы и сети, а так же `pinger-logger.service`, запускающий 
-гошный скрипт `pinger-logger/main.go`. Таймер запускает его каждые 5 минут.
+гошный скрипт `pinger-logger/main.go`. Таймер запускает его каждые 5 минут. Надо бы бинарник скрипта положить в `/opt/pinger-logger/`.
 
 Чтобы их активировать надо поместить их в /etc/systemd/system/ и активировать и запустить
 
 ```
+cd webapp && go build . && cp webapp /opt/webapp/webapp.bin && cd ..
+cd pinger-logger && go build . && cp pinger-logger /opt/pinger-logger/pinger-logger && cd ..
+
 cp pinger-logger.service /etc/systemd/system/
-cp pinger-logger.timer /etc/systemd/system
-cp webapp.serviec /etc/systemd/system
+cp pinger-logger.timer /etc/systemd/system/
+cp webapp.service /etc/systemd/system/
 
 systemctl enable webapp.service
 systemctl enable pinger-logger.timer
